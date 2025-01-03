@@ -7,8 +7,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <div class="min-h-screen bg-zinc-900">
-           <h1>kkkl</h1> 
+    <div class="min-h-screen bg-zinc-900 flex flex-col items-center justify-center">
+        <h1 class="text-white mb-[20px] text-2xl ">Create Account</h1>
+           <form action="/register" method="post" class="flex gap-2 flex-col items-center w-[300px] justify-center bg-zinc-700 rounded-md p-[20px]">
+                <input type="text" name="username" placeholder="username" class="p-3 rounded-md outline-none">
+                <input type="text" name="name" placeholder="name" class="p-3  rounded-md outline-none">
+                <input type="number" name="age" placeholder="age" class="p-3 rounded-md outline-none">
+                <input type="email" name="email" placeholder="email" class="p-3 rounded-md outline-none">
+                <input type="password" name="password" placeholder="password" class="p-3 rounded-md outline-none">
+                <input type="submit"  value="create user" class="bg-blue-500 rounded-md text-white mt-[20px] p-2">
+           </form>
     </div>
 </body>
 </html>
