@@ -42,6 +42,17 @@ app.post('/register',async(req, res)=>{
    })   
 })
 
+// middleware for login
+
+const isLoggedIn = (req,res,next)=>{
+    if(req.cookies.token === '') res.send('you must be logged in')
+    else{
+       const data = jwt.verify(req.cookies.token,'secretkeyyyyyyyyyy')
+       req.user = data ;
+       next() ;
+    }
+   
+}
 
 // login 
 
@@ -53,7 +64,33 @@ app.get('/login',(req,res)=>{
 
 app.post('/login',async (req,res)=>{
     const {email, password}= req.body ;
-    
+    const user = await userModel.findOne({email:email}) ;
+    if(!user) return res.status(500).send('something went wrong');
+
+    bcrypt.compare(password,user.password,(err,result)=>{
+        if(result){
+            const token =  jwt.sign({email:email,userid:user._id},'secretkeyyyyyyyyyy');
+            res.cookie('token',token) ;
+            res.status(200).send('you can login') ;
+        }
+        else res.redirect('/login') ;
+    })
+})  
+
+
+
+// logout
+
+app.get('/logout',(req, res)=>{
+    res.cookie('token','') ;
+    res.redirect('/login') ;
+})
+
+// profile
+
+app.get('/profile',isLoggedIn,(req,res)=>{
+   console.log(req.user) ;
+   res.render('login')
 })
 
 app.listen(3000,()=>{
