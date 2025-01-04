@@ -101,7 +101,7 @@ app.get('/edit/id',isLoggedIn, async (req,res)=>{
     
 })
 
-// create post
+// create the post
 
 app.post('/post',isLoggedIn , async (req,res)=>{
     const user = await userModel.findOne({email:req.user.email})
