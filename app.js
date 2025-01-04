@@ -93,11 +93,11 @@ app.get('/profile',isLoggedIn,async (req,res)=>{
    res.render('profile',{user})
 })
 
-// edit post
+// edit the post
 
 app.get('/edit/id',isLoggedIn, async (req,res)=>{
     const post = await postModel.findOne({_id:req.params.id}).populate('user') ;
-    
+
     
 })
 
