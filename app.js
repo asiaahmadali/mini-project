@@ -89,8 +89,22 @@ app.get('/logout',(req, res)=>{
 // profile
 
 app.get('/profile',isLoggedIn,async (req,res)=>{
-   const user = await userModel.findOne({email:req.user.email})
+   const user = await userModel.findOne({email:req.user.email}).populate('posts')
    res.render('profile',{user})
+})
+
+// create post
+
+app.post('/post',isLoggedIn , async (req,res)=>{
+    const user = await userModel.findOne({email:req.user.email})
+    const post =  await postModel.create({
+        user:user._id,
+        content:req.body.content,      
+    })
+  
+    user.posts.push(post._id) ;
+    await user.save() ;
+    res.redirect('/profile') ;
 })
 
 app.listen(3000,()=>{
