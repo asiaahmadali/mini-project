@@ -79,7 +79,7 @@ app.post('/login',async (req,res)=>{
 
 
 
-// logout
+// logout usr
 
 app.get('/logout',(req, res)=>{
     res.cookie('token','') ;
