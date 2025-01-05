@@ -115,6 +115,8 @@ app.post('/post',isLoggedIn , async (req,res)=>{
     res.redirect('/profile') ;
 })
 
+// litsen
+
 app.listen(3000,()=>{
     console.log('server started') ;
 })
