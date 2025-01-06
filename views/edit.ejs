@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="min-h-screen text-white bg-zinc-900 flex flex-col items-center justify-center">
+       
+        <h2 class="mb-[20px]">You can your post post</h2>
+
+        <form action="/update/<%=post._id%>" method="post"  class="flex flex-col items-center justify-center" >
+              <textarea name="content"  placeholder="what's in your mind? " class="w-[300px] h-[200px] p-[10px] rounded-md text-gray-500 outline-none resize-none"><%=post.content%></textarea>
+              <input type="submit" value="edit post" class="bg-blue-500 w-[300px] rounded-md p-2 mt-[20px]">
+        </form>
+           
+     
+    </div>
+</body>
+</html>

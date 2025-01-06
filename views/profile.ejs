@@ -24,9 +24,11 @@
                     <div class="bg-zinc-600 h-[150px] w-[350px] rounded-md p-3">
                         <h1 class="text-blue-500 mb-2"><%=user.username%></h1>
                         <p class="tracking-tight text-white"><%=post.content%></p>
-                         <small>4 likes</small>
+                         <small><%=post.likes.length%></small>
                         <div class="flex justify-between mt-[20px]">
-                             <a href="/like/<%=post._id%>" class="text-blue-300">Like </a>
+                             <a href="/like/<%=post._id%>" class="text-blue-300">
+                                <%=post.likes.indexOf(user._id)===-1?'like':'Unlike'%>
+                             </a>
                              <a href="/edit/<%=post._id%>">Edit</a>
                         </div>
                  </div>
