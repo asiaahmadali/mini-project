@@ -21,11 +21,12 @@
             <h1 class="mt-[20px] text-xl mb-[20px]">your posts</h1>
             <div class="flex flex-wrap gap-3">
                 <%user.posts.reverse().forEach((post)=>{%>
-                    <div class="bg-zinc-600 h-[120px] w-[350px] rounded-md p-3">
+                    <div class="bg-zinc-600 h-[150px] w-[350px] rounded-md p-3">
                         <h1 class="text-blue-500 mb-2"><%=user.username%></h1>
                         <p class="tracking-tight text-white"><%=post.content%></p>
+                         <small>4 likes</small>
                         <div class="flex justify-between mt-[20px]">
-                             <a href="" class="text-blue-300">Like </a>
+                             <a href="/like/<%=post._id%>" class="text-blue-300">Like </a>
                              <a href="/edit/<%=post._id%>">Edit</a>
                         </div>
                  </div>
