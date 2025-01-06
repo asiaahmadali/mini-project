@@ -129,7 +129,7 @@ app.get('/like/:id',isLoggedIn , async(req, res)=>{
      res.redirect('/profile') ;
 })
 
-// edit post
+// edit the post
 
 app.get('/edit/:id',isLoggedIn,async (req,res)=>{
         let post = await postModel.findOne({_id:req.params.id}).populate('user');
