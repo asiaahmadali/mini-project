@@ -116,7 +116,7 @@ app.post('/post',isLoggedIn , async (req,res)=>{
 })
 
 
-// like post 
+// like the user post 
 
 app.get('/like/:id',isLoggedIn , async(req, res)=>{
      let post = await postModel.findOne({_id:req.params.id}).populate('user')
