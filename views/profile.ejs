@@ -9,7 +9,13 @@
 <body>
     <div class="min-h-screen text-white bg-zinc-900 flex flex-col items-center justify-center">
         <a href="/logout" class="bg-red-500 p-2 rounded-md  mb-[20px]">logout</a>
-        <h1 class="text-white mb-[20px] text-2xl ">Hey, <%=user.username%> 👋👋</h1>
+        <div class="flex gap-2 items-center justify-center">
+            <div class="w-10 h-10 rounded-md bg-red-500">
+                <img src="/images/uploads/<%=user.profilePic%>" class="w-full h-full object-cover">
+            </div>
+            <h1 class="text-white mb-[20px] text-2xl ">Hey, <%=user.username%> 👋👋</h1>
+        </div>
+        
         <h2 class="mb-[20px]">You can create a new post</h2>
 
         <form action="/post" method="post"  class="flex flex-col items-center justify-center" >
