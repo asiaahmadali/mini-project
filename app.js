@@ -36,6 +36,7 @@ app.post('/register',async(req, res)=>{
          });
     //    generate token
        const token =  jwt.sign({email:email,userid:user._id},'secretkeyyyyyyyyyy');
+    //    set cookies
        res.cookie('token',token) ;
        res.send('registered') ;
     })
