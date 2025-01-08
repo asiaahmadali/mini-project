@@ -86,7 +86,7 @@ app.get('/logout',(req, res)=>{
     res.redirect('/login') ;
 })
 
-// user profile
+// login user profile
 
 app.get('/profile',isLoggedIn,async (req,res)=>{
    const user = await userModel.findOne({email:req.user.email}).populate('posts')
