@@ -17,7 +17,7 @@ app.get('/',(req,res)=>{
     res.render('index')
 })
 
-// regiter route
+// regiter route post method
 
 app.post('/register',async(req, res)=>{
    const {username, name , email, password, age}= req.body;
