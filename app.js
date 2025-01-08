@@ -5,12 +5,26 @@ const postModel = require('./models/post') ;
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcrypt') ;
 const jwt = require('jsonwebtoken') ;
-
+const multer = require('multer') ;
 
 app.use(express.json()) ;
 app.use(express.urlencoded({extended:true})) ;
 app.set('view engine','ejs') ;
 app.use(cookieParser());
+
+// multer storage
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './public/images/upload')
+    },
+    filename: function (req, file, cb) {
+      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+      cb(null, file.fieldname + '-' + uniqueSuffix)
+    }
+  })
+  
+  const upload = multer({ storage: storage })
 
 
 app.get('/',(req,res)=>{
@@ -141,6 +155,15 @@ app.get('/edit/:id',isLoggedIn,async (req,res)=>{
 app.post('/update/:id',isLoggedIn ,async (req, res)=>{
     let post = await postModel.findOneAndUpdate({_id:req.params.id},{content:req.body.content});
     res.redirect('/profile') ;
+})
+
+// upload file 
+app.get('/test',(req,res)=>{
+    res.render('test') ;
+})
+
+app.post('/upload',(req,res)=>{
+
 })
 // litsen server
 
