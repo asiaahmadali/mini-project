@@ -60,7 +60,7 @@ app.get('/login',(req,res)=>{
     res.render('login') ;
 })
 
-// login post method
+// login post method using bcrypt
 
 app.post('/login',async (req,res)=>{
     const {email, password}= req.body ;
