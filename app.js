@@ -102,9 +102,7 @@ app.get('/profile',isLoggedIn,async (req,res)=>{
 // edit the login user post
 
 app.get('/edit/id',isLoggedIn, async (req,res)=>{
-    const post = await postModel.findOne({_id:req.params.id}).populate('user') ;
-
-    
+    const post = await postModel.findOne({_id:req.params.id}).populate('user') ;   
 })
 
 // create the post by login user
@@ -161,7 +159,7 @@ app.post('/upload',isLoggedIn ,upload.single('image'),async (req,res)=>{
     res.redirect('/profile') ;
 })  
 
-// litsen server
+// litsen server at port 3000
 
 app.listen(3000,()=>{
     console.log('server started') ;
