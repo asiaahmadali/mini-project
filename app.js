@@ -54,7 +54,7 @@ const isLoggedIn = (req,res,next)=>{
    
 }
 
-// login user
+// login user render
 
 app.get('/login',(req,res)=>{
     res.render('login') ;
